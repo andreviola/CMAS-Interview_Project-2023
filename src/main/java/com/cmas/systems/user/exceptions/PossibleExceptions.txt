@@ -1,0 +1,20 @@
+GET
+-- Arguments(id) are null -> ObjectNotFoundException
+
+
+
+INSERT
+-- try to insert with id? -> set to null
+
+-- Insert already present User -> AlreadyExistsException 
+-- Insert without all args -> IllegalArgumentException
+
+DELETE
+-- Delete non existent User -> ObjectNotFoundException
+
+
+UPDATE
+-- Wrong field name -> defaults to old User field
+-- New User field == null -> defaults to old User field
+
+-- update non existent User(id) -> ObjectNotFoundException
