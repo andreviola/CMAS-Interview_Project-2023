@@ -17,6 +17,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+
+/**
+* User Entity
+*/
 @Entity
 @Builder
 @Table(name = "users")
@@ -38,7 +43,15 @@ public class User extends RepresentationModel<User> implements Serializable{
     private Integer age;
     private Boolean active;
     
-
+    /**
+     * User Entity Constructor
+     * @param String firstName 
+     * @param String lastName
+     * @param String email
+     * @param Integer age
+     * @param Boolean active
+     * 
+     */
     public User(String firstName, String lastName, String email, Integer age, Boolean active) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -47,10 +60,19 @@ public class User extends RepresentationModel<User> implements Serializable{
         this.active = active;
     }
 
-    
+    /**
+     * Returns True if the user is Active and False if it isn't
+     * @return Boolean
+     */
     public Boolean isActive() {
         return active;
     }
+    
+    /**
+     * Sets the active state of the specified user
+     * @param Boolean active
+     * 
+     */
     public void setActive(Boolean active) {
         this.active = active;
     }

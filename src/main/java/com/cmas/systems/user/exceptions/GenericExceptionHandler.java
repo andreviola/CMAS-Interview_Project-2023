@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.zalando.problem.Problem;
 import org.zalando.problem.Status;
 
+/**
+ * ControllerAdvice for Custom Exceptions handling
+ */
 @ControllerAdvice
 public class GenericExceptionHandler {
     @ExceptionHandler(EmptyFieldException.class)

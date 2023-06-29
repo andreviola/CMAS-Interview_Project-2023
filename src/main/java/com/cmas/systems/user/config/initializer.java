@@ -13,6 +13,9 @@ import com.cmas.systems.user.entities.User;
 import com.cmas.systems.user.repositories.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Initializer for the project. Fills the repository and more. Mainly for convenience sake
+ */
 @Configuration
 public class initializer implements CommandLineRunner, InitializingBean {
 

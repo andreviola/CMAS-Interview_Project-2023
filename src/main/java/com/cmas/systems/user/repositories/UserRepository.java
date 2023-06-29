@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.cmas.systems.user.entities.User;
 
+/**
+ * Interface extending JpaRepository
+ */
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
     

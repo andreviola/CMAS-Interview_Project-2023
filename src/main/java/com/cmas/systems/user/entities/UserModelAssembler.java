@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 
 import com.cmas.systems.user.controller.UserController;
 
+/**
+ * Will add links to UserModel instances and make sure a self-link is always added.
+ */
 @Component
 public class UserModelAssembler extends RepresentationModelAssemblerSupport<User, UserModel> {
     public UserModelAssembler() {

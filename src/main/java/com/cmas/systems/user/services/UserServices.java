@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import com.cmas.systems.user.entities.User;
 import com.cmas.systems.user.repositories.UserRepository;
 
+/**
+ * Class offered as an interface that stands alone in the model.
+ */
 @Service
 public class UserServices {
     

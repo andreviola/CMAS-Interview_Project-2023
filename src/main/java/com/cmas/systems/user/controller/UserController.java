@@ -15,6 +15,7 @@ import com.cmas.systems.user.exceptions.EmptyFieldException;
 import com.cmas.systems.user.exceptions.UserNotFoundException;
 import com.cmas.systems.user.services.UserServices;
 
+/** Rest Controller for User Entity Class */
 @RestController
 @RequestMapping(value = { "/api/v2/users" })
 public class UserController {
