@@ -27,13 +27,25 @@ public class UserController {
     private UserModelAssembler userModelAssembler;
 
 
-    public void SetService(UserServices ser){
-        this.service = ser;
+    /**
+     * Set UserController's UserService
+     * @param service
+     */
+    public void SetService(UserServices service){
+        this.service = service;
     }
+    /**
+     * Set UserController's UserModelAssembler
+     * @param modelAssembler
+     */
     public void SetModelAssembler(UserModelAssembler modelAssembler){
         this.userModelAssembler = modelAssembler;
     }
 
+    /**
+     * GET Request of all User Entities
+     * @return Response Entity of all Users
+     */
     @GetMapping()
     public ResponseEntity<List<UserModel>> findAll() {
         List<UserModel> users = service.findAll().stream().map(userModelAssembler::toModel).collect(Collectors.toList());
@@ -42,6 +54,11 @@ public class UserController {
 
     }
 
+     /**
+    * GET Request of an User entity by its id.
+    * @param id
+    * @return Response Entity with the given id
+    */
     @GetMapping(value = { "/{id}" })
     public ResponseEntity<UserModel> findById(@PathVariable Long id) {
         User obj = service.findById(id);
@@ -52,6 +69,11 @@ public class UserController {
         return new ResponseEntity<>(userModelAssembler.toModel(obj), HttpStatus.OK);
     }
 
+    /**
+    * POST Request of an User entity.
+    * @param obj
+    * @return Response Entity of the inserted entity
+    */
     @PostMapping
     public ResponseEntity<UserModel> Insert(@RequestBody User obj) {
         if (obj.getId() != null) {// Try to insert with an id
@@ -66,6 +88,11 @@ public class UserController {
         return new ResponseEntity<>(userModelAssembler.toModel(obj), HttpStatus.CREATED);
     }
 
+     /**
+    * DELETE Request of an User entity by its id.
+    * @param id
+    * @return Response Entity with NO_CONTENT status.
+    */
     @DeleteMapping(value = { "/{id}" })
     public ResponseEntity<UserModel> Delete(@PathVariable Long id) {
         findById(id);
@@ -73,6 +100,12 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    /**
+    * PUT Request of an User entity.
+    * @param obj the updated User body
+    * @param id the id of the User to be updated
+    * @return Response Entity of the updated entity.
+    */
     @PutMapping(value = { "/{id}" })
     public ResponseEntity<UserModel> Update(@RequestBody User obj, @PathVariable Long id) {
         findById(id);
@@ -82,6 +115,11 @@ public class UserController {
         return new ResponseEntity<>(userModelAssembler.toModel(obj), HttpStatus.OK);
     }
 
+    /**
+    * Check if User contains all args
+    * @param obj the User to be checked.
+    * @return {@code false} if one or more fields are null; otherwise returns {@code true}
+    */
     private Boolean hasAllArgs(User obj) {
         if (obj.getFirstName() != null && obj.getLastName() != null && obj.getEmail() != null
                 && obj.getAge() != null && obj.getActive() != null) {
