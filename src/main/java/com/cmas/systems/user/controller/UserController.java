@@ -58,6 +58,7 @@ public class UserController {
     * GET Request of an User entity by its id.
     * @param id
     * @return Response Entity with the given id
+    * @throws UserNotFoundException when the id isn't assigned to any User
     */
     @GetMapping(value = { "/{id}" })
     public ResponseEntity<UserModel> findById(@PathVariable Long id) {
@@ -73,6 +74,8 @@ public class UserController {
     * POST Request of an User entity.
     * @param obj
     * @return Response Entity of the inserted entity
+    * @throws UnsupportedOperationException when the obj contains an id (all ids are automatically generated)
+    * @throws EmptyFieldException when the obj contains one or more empty fields
     */
     @PostMapping
     public ResponseEntity<UserModel> Insert(@RequestBody User obj) {
